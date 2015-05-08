@@ -1,0 +1,32 @@
+{
+  "name": "parse-git-log",
+  "version": "0.0.0",
+  "description": "Parse default `git log` style to array of objects from git repository of current working directory or given filepath",
+  "scripts": {
+    "test": "standard && node test.js",
+    "travis": "standard && istanbul cover test.js --report lcovonly"
+  },
+  "author": {
+    "name": "Charlike Mike Reagent",
+    "email": "mameto_100@mail.bg",
+    "url": "https://github.com/tunnckoCore"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tunnckoCore/parse-git-log.git"
+  },
+  "keywords": [],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/tunnckoCore/parse-git-log/blob/master/LICENSE.md"
+  },
+  "dependencies": {
+    "exec-cmd": "~2.0.0",
+    "handle-callback": "~1.0.2"
+  },
+  "devDependencies": {
+    "assertit": "^0.1.0",
+    "istanbul": "^0.3.9",
+    "standard": "^3.7.3"
+  }
+}
