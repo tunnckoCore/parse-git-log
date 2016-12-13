@@ -1,33 +1,71 @@
 {
   "name": "parse-git-log",
-  "version": "0.0.0",
-  "description": "Parse default `git log` style to array of objects from git repository of current working directory or given filepath",
+  "version": "0.1.0",
+  "description": "Parse a `git log` output of a repository into an object with useful commit data. Supports plugins, streaming, promises and callback APIs.",
+  "repository": "tunnckoCore/parse-git-log",
+  "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
+  "precommit.silent": true,
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "test": "standard && node test.js",
-    "travis": "standard && istanbul cover test.js --report lcovonly"
+    "lint": "standard --verbose",
+    "pretest": "npm run lint",
+    "test": "npm run coverage",
+    "posttest": "npm run lint:coverage",
+    "coverage": "nyc node test.js",
+    "lint:coverage": "nyc check-coverage --lines 0 --branches 0 --statements 0 --functions 0",
+    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
+    "prerelease": "npm test",
+    "release": "standard-version --sign --no-verify",
+    "precommit": "git add --all",
+    "commit": "git-cz"
   },
-  "author": {
-    "name": "Charlike Mike Reagent",
-    "email": "mameto_100@mail.bg",
-    "url": "https://github.com/tunnckoCore"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/tunnckoCore/parse-git-log.git"
-  },
-  "keywords": [],
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/tunnckoCore/parse-git-log/blob/master/LICENSE.md"
-  },
-  "dependencies": {
-    "exec-cmd": "~2.0.0",
-    "handle-callback": "~1.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "assertit": "^0.1.0",
-    "bluebird": "^2.9.25",
-    "istanbul": "^0.3.9",
-    "standard": "^3.7.3"
+    "commitizen": "^2.8.6",
+    "coveralls": "^2.11.15",
+    "cz-conventional-changelog": "^1.2.0",
+    "mukla": "^0.4.8",
+    "nyc": "^10.0.0",
+    "pre-commit": "^1.2.2",
+    "standard": "^8.6.0",
+    "standard-version": "^4.0.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "verb": {
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 3,
+      "footer": ""
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "related": {
+      "list": [
+        "always-done",
+        "minibase",
+        "try-catch-core"
+      ],
+      "highlight": "always-done"
+    },
+    "lint": {
+      "reflinks": true
+    }
+  },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2"
   }
 }

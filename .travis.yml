@@ -1,8 +1,12 @@
 sudo: false
 language: node_js
+
 node_js:
-  - "iojs"
-  - "0.10"
-  - "0.12"
-script: "npm run-script travis"
-after_script: "npm install coveralls && cat ./coverage/lcov.info | coveralls"
+  - "node"
+  - "6"
+  - "4"
+
+notifications:
+  email: false
+
+after_success: npm run report-coverage

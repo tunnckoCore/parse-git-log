@@ -1,24 +1,18 @@
-/**
+/*!
  * parse-git-log <https://github.com/tunnckoCore/parse-git-log>
  *
- * Copyright (c) 2015 Charlike Mike Reagent, contributors.
+ * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)
  * Released under the MIT license.
  */
 
+/* jshint asi:true */
+
 'use strict'
 
-// var test = require('assertit')
-var parseGitLog = require('./index')
+const test = require('mukla')
+const parseGitLog = require('./index')
 
-// test('parse-git-log:', function () {
-//   // body
-// })
-
-var p = parseGitLog({cwd: '../gulp-micromatch'})
-
-p.then(function (json) {
-  console.log(JSON.stringify(json, 0, 2))
-})
-.catch(function _catch (err) {
-  console.log('PROMISE ERR:', err)
+test('parse-git-log', function (done) {
+  parseGitLog()
+  done()
 })
