@@ -45,7 +45,7 @@ const formats = [
  * @api public
  */
 
-const parseGitLogStream = (cwd, plugin) => {
+module.exports = function parseGitLog (cwd, plugin) {
   cwd = typeof cwd === 'string' ? cwd : process.cwd()
   plugin = typeof plugin === 'function' ? plugin : () => () => {}
 
@@ -219,5 +219,3 @@ const createFile = (delimParts, chunk) => {
     }
   })
 }
-
-module.exports = parseGitLogStream

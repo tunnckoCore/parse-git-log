@@ -15,6 +15,7 @@ You might also be interested in [always-done](https://github.com/hybridables/alw
 - [Install](#install)
 - [Usage](#usage)
 - [API](#api)
+  * [parseGitLog](#parsegitlog)
 - [Related](#related)
 - [Contributing](#contributing)
 - [Building docs](#building-docs)
@@ -45,6 +46,8 @@ const parseGitLog = require('parse-git-log')
 ```
 
 ## API
+
+### [parseGitLog](index.js#L48)
 
 > Parses an advanced `git log` output using
 streams. Allows custom `plugin` function to be passed
