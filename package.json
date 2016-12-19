@@ -45,6 +45,10 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2"
+  },
   "verb": {
     "run": true,
     "toc": {
@@ -61,12 +65,13 @@
       "list": [
         "always-done",
         "minibase",
-        "try-catch-core"
+        "try-catch-core",
+        "parse-function",
+        "parse-semver",
+        "each-promise",
+        "parse-github-url"
       ],
       "highlight": "always-done"
-    },
-    "lint": {
-      "reflinks": true
     },
     "reflinks": [
       "always-done",
@@ -78,11 +83,12 @@
       "once",
       "standard-version",
       "verb",
-      "verb-generate-readme"
-    ]
-  },
-  "engines": {
-    "node": ">=4",
-    "npm": ">=2"
+      "verb-generate-readme",
+      "through2",
+      "vfile"
+    ],
+    "lint": {
+      "reflinks": true
+    }
   }
 }

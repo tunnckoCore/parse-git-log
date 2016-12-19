@@ -28,7 +28,7 @@ const formats = [
 /**
  * > Parses an advanced `git log` output using
  * streams. Allows custom `plugin` function to be passed
- * to update/modify the commit object (which is [VFile][]).
+ * to update/modify the commit object (which is [vfile][]).
  * It also emits `data` and `commit` events, so you may not
  * need such `plugin` function. But in case you want to do some
  * more parsing and interesting stuff, this `plugin` function
@@ -156,8 +156,6 @@ const parseGitLogStream = (cwd, plugin) => {
 
   return stream
 }
-
-// create a virtual VFile from chunk/commit metadata
 
 /**
  * > Creates a virtual file ([vfile][]) chunk metadata,
