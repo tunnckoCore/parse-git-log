@@ -59,7 +59,7 @@ const formats = [
  * @api public
  */
 
-module.exports = function parseGitLog (cwd, plugin) {
+const parseGitLog = module.exports = function parseGitLog (cwd, plugin) {
   cwd = typeof cwd === 'string' ? cwd : process.cwd()
   plugin = typeof plugin === 'function' ? plugin : () => () => {}
 
@@ -233,3 +233,13 @@ const createFile = (delimParts, chunk) => {
     }
   })
 }
+
+parseGitLog.promise = (cwd, plugin) => new Promise((resolve, reject) => {
+  const commits = []
+  parseGitLog(cwd, plugin)
+    .once('error', reject)
+    .on('commit', (commit) => commits.push(commit))
+    .once('finish', () => {
+      resolve(commits)
+    })
+})
