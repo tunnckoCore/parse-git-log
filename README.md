@@ -16,6 +16,7 @@ You might also be interested in [always-done](https://github.com/hybridables/alw
 - [Usage](#usage)
 - [API](#api)
   * [parseGitLog](#parsegitlog)
+  * [.promise](#promise)
 - [Related](#related)
 - [Contributing](#contributing)
 - [Building docs](#building-docs)
@@ -47,7 +48,7 @@ const parseGitLog = require('parse-git-log')
 
 ## API
 
-### [parseGitLog](index.js#L62)
+### [parseGitLog](index.js#L63)
 > Parses an advanced `git log` output using streams. Allows custom `plugin` function to be passed to update/modify the commit object (which is [vfile][]). It also emits `data` and `commit` events, so you may not need such `plugin` function. But in case you want to do some more parsing and interesting stuff, this `plugin` function allows you to do cool things. That `plugin` function is called with "transform stream" context and this is also passed as first argument. When you return a function from that plugin, it is called with [vfile][] object (commit object) as first argument.
 
 **Params**
@@ -70,6 +71,28 @@ parseGitLog()
   .once('error', (err) => console.error('err:', err))
   .on('commit', (commit) => console.log('commit:', commit))
   .once('finish', () => console.log('done'))
+```
+
+### [.promise](index.js#L263)
+> Thin Promise wrapper over the streaming API.
+
+**Params**
+
+* `[cwd]` **{String}**: path to where is the `.git` folder; defaults to `process.cwd()`    
+* `[plugin]` **{Function}**: smart plugin function, passed with `stream, file` signature, if returns another function, that function is passed with `file` object which represent each commit object.    
+* `returns` **{Promise}**: resolves array of [vfile][] commit objects, otherwise rejected promise  
+
+**Example**
+
+```js
+const parseGitLog = require('parse-git-log')
+
+parseGitLog.promise('../foo-bar')
+  .then((commits) => {
+    console.log('list of commit objects:')
+    commits.forEach((commit) => console.log('commit:', commit))
+  })
+  .catch(console.error)
 ```
 
 ## Related

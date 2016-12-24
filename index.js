@@ -49,6 +49,7 @@ const formats = [
  *   .once('finish', () => console.log('done'))
  * ```
  *
+ * @name   parseGitLog
  * @emits `commit` passed with [vfile][] object for each commit
  * @emits `data` same as `commit` event; passed with [vfile][] object for each commit
  * @param  {String} `[cwd]` path to where is the `.git` folder; defaults to `process.cwd()`
@@ -233,6 +234,31 @@ const createFile = (delimParts, chunk) => {
     }
   })
 }
+
+/**
+ * > Thin Promise wrapper over the streaming API.
+ *
+ * **Example**
+ *
+ * ```js
+ * const parseGitLog = require('parse-git-log')
+ *
+ * parseGitLog.promise('../foo-bar')
+ *   .then((commits) => {
+ *     console.log('list of commit objects:')
+ *     commits.forEach((commit) => console.log('commit:', commit))
+ *   })
+ *   .catch(console.error)
+ * ```
+ *
+ * @name   .promise
+ * @param  {String} `[cwd]` path to where is the `.git` folder; defaults to `process.cwd()`
+ * @param  {Function} `[plugin]` smart plugin function, passed with `stream, file` signature,
+ *                               if returns another function, that function is passed
+ *                               with `file` object which represent each commit object.
+ * @return {Promise} resolves array of [vfile][] commit objects, otherwise rejected promise
+ * @api public
+ */
 
 parseGitLog.promise = (cwd, plugin) => new Promise((resolve, reject) => {
   const commits = []
