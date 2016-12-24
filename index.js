@@ -37,6 +37,20 @@ const formats = [
  * first argument. When you return a function from that plugin,
  * it is called with [vfile][] object (commit object) as first argument.
  *
+ * **Example**
+ *
+ * ```js
+ * const parseGitLog = require('parse-git-log')
+ *
+ * // optionally pass `cwd` as first argument
+ * parseGitLog()
+ *   .once('error', (err) => console.error('err:', err))
+ *   .on('commit', (commit) => console.log('commit:', commit))
+ *   .once('finish', () => console.log('done'))
+ * ```
+ *
+ * @emits `commit` passed with [vfile][] object for each commit
+ * @emits `data` same as `commit` event; passed with [vfile][] object for each commit
  * @param  {String} `[cwd]` path to where is the `.git` folder; defaults to `process.cwd()`
  * @param  {Function} `[plugin]` smart plugin function, passed with `stream, file` signature,
  *                               if returns another function, that function is passed
