@@ -39,7 +39,36 @@
   "files": [
     "index.js"
   ],
-  "keywords": [],
+  "keywords": [
+    "asyncawait",
+    "author",
+    "callbacks",
+    "commit",
+    "commits",
+    "data",
+    "gh",
+    "git",
+    "github",
+    "gitlog",
+    "hub",
+    "log",
+    "modern",
+    "object",
+    "parse",
+    "parser",
+    "parsing",
+    "plugin",
+    "plugins",
+    "pretty",
+    "promise",
+    "repository",
+    "short",
+    "stream",
+    "streaming",
+    "streams",
+    "util",
+    "utils"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
