@@ -1,6 +1,6 @@
 {
   "name": "parse-git-log",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Parse a `git log` output of a repository into an object with useful commit data. Supports plugins, streaming, promises and callback APIs.",
   "repository": "tunnckoCore/parse-git-log",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
