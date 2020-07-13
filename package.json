@@ -34,7 +34,7 @@
     "nyc": "^10.0.0",
     "pre-commit": "^1.2.2",
     "standard": "^8.6.0",
-    "standard-version": "^4.0.0"
+    "standard-version": "^8.0.1"
   },
   "files": [
     "index.js"
